@@ -7,14 +7,21 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "clean": "yarn clean_node_modules && yarn pod_install && yarn clean_watchman && yarn clean_cache",
+    "clean_node_modules": "rm -rf node_modules && yarn",
+    "pod_install": "cd ios && pod install",
+    "clean_watchman": "watchman watch-del-all",
+    "clean_cache": "rm -rf /tmp/metro-*"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.16.1",
     "react": "17.0.2",
     "react-native": "0.67.3",
     "react-redux": "^7.2.6",
-    "redux": "^4.1.2"
+    "redux": "^4.1.2",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-persist": "^6.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

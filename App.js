@@ -5,7 +5,8 @@ import {
   Dimensions
 } from 'react-native';
 import { Provider } from 'react-redux';
-import store from './src/redux/store';
+import { store, persistor } from './src/redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
 import ToDoList from './src/ToDoList';
 
 const width = Dimensions.get('window').width;
@@ -18,9 +19,11 @@ const App = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Provider store={store}>
-        <ToDoList />
+        <PersistGate persistor={persistor}>
+          <ToDoList />
+        </PersistGate>
       </Provider>
-    </SafeAreaView>
+    </SafeAreaView >
   );
 };
 
