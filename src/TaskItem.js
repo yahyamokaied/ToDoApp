@@ -19,13 +19,14 @@ const TaskItem = ({ item, onPress }) => {
         <View style={[styles.itemView]} >
             <View style={styles.taskColumn}>
 
-                <Text style={styles.textId}>{constants.id} {item.id}</Text>
-
                 <Text style={[styles.textTask, { textDecorationLine: item.isDone ? 'line-through' : 'none' }]}>
                     {item.title}
                 </Text>
 
                 <View style={styles.operationsRow}>
+
+                    <Text style={styles.textId}>{constants.id}{item.id} </Text>
+
                     <TouchableOpacity
                         style={[styles.RemoveBtn, { borderColor: item.isDone ? 'grey' : 'green' }]}
                         onPress={() => editTask(onPress)} >
@@ -46,21 +47,6 @@ const TaskItem = ({ item, onPress }) => {
 }
 
 const styles = StyleSheet.create({
-    Container: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100%',
-        width: '100%',
-    },
-    input: {
-        height: 50,
-        borderColor: 'green',
-        borderWidth: 1,
-        width: '85%',
-        borderRadius: 10,
-        padding: 4,
-        margin: 10
-    },
     listStyle: {
         height: '100%',
         width: '90%',
@@ -84,11 +70,6 @@ const styles = StyleSheet.create({
         shadowRadius: 3.84,
         elevation: 5,
     },
-    header: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 10
-    },
     taskColumn: {
         flex: 1,
         flexDirection: 'column',
@@ -101,16 +82,6 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         alignItems: 'center'
     },
-    empty: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 10
-    },
-    separator: {
-        height: 1,
-        margin: 5,
-        opacity: 0.5
-    },
     textId: {
         fontSize: 15,
         padding: 1,
@@ -122,19 +93,6 @@ const styles = StyleSheet.create({
         fontSize: 18,
         padding: 4,
         letterSpacing: 1
-    },
-    textDescription: {
-        fontSize: 16,
-        padding: 1
-    },
-    addBtn: {
-        width: 50,
-        height: 50,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'green',
-        margin: 10,
-        borderRadius: 25
     },
     RemoveBtn: {
         flex: 1,
@@ -160,10 +118,12 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
         color: 'white'
-    }, removeTxt: {
+    },
+    removeTxt: {
         fontSize: 16,
         color: 'red'
-    }, editTxt: {
+    },
+    editTxt: {
         fontSize: 16,
     }
 });
