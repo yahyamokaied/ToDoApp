@@ -12,17 +12,22 @@ import ToDoList from './src/ToDoList';
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-
-
 const App = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+
+      {/* Redux Store */}
       <Provider store={store}>
+        {/* Redux Persistor */}
         <PersistGate persistor={persistor}>
+
+          {/* ToDo List */}
           <ToDoList />
+
         </PersistGate>
       </Provider>
+
     </SafeAreaView >
   );
 };

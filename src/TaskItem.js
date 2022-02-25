@@ -1,22 +1,24 @@
 import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import * as todoActions from './redux/actions';
 import * as constants from './constants/constants';
 
 const TaskItem = ({ item, onPress }) => {
+
     const dispatch = useDispatch();
 
-
+    // Edit Task in Redux
     const editTask = (selectedId) => {
         dispatch(todoActions.EditTodoTask(selectedId));
     }
-
+    // Remove Task from Redux
     const removeTask = (selectedId) => {
         dispatch(todoActions.RemoveTodoTask(selectedId));
     }
     return (
-        <View style={[styles.itemView]} >
+        <View style={[styles.itemView, { opacity: item.isDone ? 0.5 : 1 }]} >
+
             <View style={styles.taskColumn}>
 
                 <Text style={[styles.textTask, { textDecorationLine: item.isDone ? 'line-through' : 'none' }]}>
@@ -42,6 +44,7 @@ const TaskItem = ({ item, onPress }) => {
                 </View>
 
             </View>
+
         </View >
     );
 }
